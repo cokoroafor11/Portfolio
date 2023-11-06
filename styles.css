@@ -10,18 +10,40 @@
 
 /*Background and text colors*/
 body {
-    background-color: black;
-    color: white;
+    background-color: #080808;
+    color: #ababab;
     
 }
 
+/*background picture on first slide*/
 .background-pic{
     background-image: url("images/laptop.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
+    position: relative;
+}
+/* tried adding opacity but didn't work */
+.background-pic::before {
+    content: "";
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
+
+#header{
+    height: 100vh;
+    width: 100%;
+
+}
+
+
+/* navbar creation */
 .navbar {
     display: flex;
     height: 5rem;
@@ -32,38 +54,37 @@ body {
     
 }
 
+/*lining up navbar elements*/
 .navbar .nav-menu ul li {
     display: inline-block;
     list-style: none;
     margin: 10px 20px;
 } 
 
+/* remove hyperlink and add transition when hovering */
 .navbar .nav-menu ul li a{
     text-decoration: none;
-    color: white;
+    color: #ababab;
     font-size: 20px;
     border-bottom: 2px solid transparent;
     transition: 0.4s;
 }
-
+/* navbar transition out when hovering is done*/
 .navbar .nav-menu ul li a:hover{
-    border-bottom: 2px solid rgb(98, 3, 187);
+    border-bottom: 2px solid rgb(142, 21, 255);
+
     border-radius: 2px;
     padding: 10px 10px;
     transition: 0.4s;
 }
 
+/* mini logo up top */
 .pic img{
     height: 4rem;
     margin-left: 2rem;
     border-radius: 50%;
 }
 
-#header{
-    height: 100vh;
-    width: 100%;
-
-}
 
 .intro{
     margin-top: 5%;
@@ -79,12 +100,9 @@ body {
 /* ABOUT SECTION */
 #about{
     padding: 80px 0; 
-    color: #ababab;
-
+    padding-left:60px;
 }
 
-.about-container{
-}
 
 .row{
     display: flex;
@@ -113,4 +131,51 @@ body {
 .subtitle{
     font-size:60px;
     font-weight: 600px;
+}
+
+.tabs{
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.links{
+    margin-right:50px;
+    font-size: 18px;
+    font-weight:500;
+    cursor: pointer;
+    position: relative;
+}
+
+.links::after{
+    content:'';
+    width: 0;
+    height: 3px;
+    /* background: #ff004f; */
+    background: rgb(142, 21, 255);
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s
+}
+
+.links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span {
+    color: rgb(148, 62, 228);
+    font-size: 14px
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
 }
